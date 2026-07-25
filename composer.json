@@ -1,0 +1,103 @@
+{
+    "name": "adambean/randflake-id-symfony-test-app",
+    "description": "A distributed, uniform, unpredictable, unique random ID generator: PHP Symfony bundle test application.",
+    "type": "project",
+    "license": "MIT",
+    "keywords": [
+        "randflake",
+        "randflake-id",
+        "sparx64"
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../lib",
+            "minimum-stability": "dev",
+            "prefer-stable": false
+        },
+        {
+            "type": "path",
+            "url": "../symfony-bundle",
+            "minimum-stability": "dev",
+            "prefer-stable": false
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "adambean/randflake-id-php": "^1.0.0 || dev-main",
+        "adambean/randflake-id-bundle": "^1.0.0 || dev-main",
+        "doctrine/doctrine-bundle": "^2.18",
+        "doctrine/doctrine-fixtures-bundle": "^4.3",
+        "doctrine/orm": "^2.17",
+        "symfony/console": "*",
+        "symfony/dotenv": "*",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "*",
+        "symfony/runtime": "*",
+        "symfony/validator": "*",
+        "symfony/yaml": "*"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^9.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "test": "phpunit",
+        "cs:fix": "php-cs-fixer fix",
+        "stan": "phpstan analyse"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.4.*"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
